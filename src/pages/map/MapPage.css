@@ -1,0 +1,10 @@
+.map-container {
+    height: 80vh;
+  }
+  
+.coordinates {
+    margin-top: 1em;
+    display: flex;
+    justify-content: space-around;
+    max-width: 70%;
+}
