@@ -8,22 +8,25 @@ import { BrowserRouter,
           Redirect } from "react-router-dom";
 import Header from './components/Header/Header';
 import '../src/components/Header/Header.css'
+import {EstateProvider} from './context/context.js';
 
 function App() {
   return (
     <BrowserRouter>
-        <div className="App">
-          {/* <RealEstate></RealEstate> */}
-          {/* <MapPage/> */}
-          <Header/>
-          <Routes>
-            <Route path="/map" element={<MapPage/>}/>
-            <Route path="/real-estate" element={<RealEstate/>}/>
-            <Route path="/" exact>
-              {/* <Redirect to="/real-estate" /> */}
-            </Route> 
-          </Routes>
-        </div>
+      <EstateProvider>
+          <div className="App">
+            {/* <RealEstate></RealEstate> */}
+            {/* <MapPage/> */}
+            <Header/>
+            <Routes>
+              <Route path="/map" element={<MapPage/>}/>
+              <Route path="/real-estate" element={<RealEstate/>}/>
+              <Route path="/" exact>
+                {/* <Redirect to="/real-estate" /> */}
+              </Route> 
+            </Routes>
+          </div>
+      </EstateProvider>
     </BrowserRouter>
   );
 }

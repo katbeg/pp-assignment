@@ -1,13 +1,27 @@
-.realEstate {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1em;
-}
-
 .realEstate__search{
-    padding: 1em;
     display: flex;
     align-items: center;
+    padding-bottom: 1em;
 }
 
+.realEstate__filters {
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+.realEstate__rooms, .realEstate__sort {
+    width: 10em;
+    margin: 1em;
+}
+
+.cardHolder {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.cardHolder__item {
+    min-width: 25%;
+}
