@@ -9,7 +9,7 @@ export const EstateProvider = (props) => {
         fetch('https://mocki.io/v1/d2fc8cf8-c109-4120-985b-793a2764cf01')
           .then((response) => response.json())
           .then((data) => {
-            setData(data);
+            setData(data[0].properties);
             setLoading(false);
           });
       }, []);

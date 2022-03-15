@@ -1,4 +1,4 @@
-import React, {useState, useContext} from "react";
+import React, {useState, useContext, useEffect} from "react";
 import { TextField } from "@mui/material";
 import IconButton from '@mui/material/IconButton';
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
@@ -15,22 +15,21 @@ export default function RealEstate(){
     const [value, setValue] = useState(options[0]);
     const [inputValue, setInputValue] = useState('');
     const {data, loading} = useContext(EstateContext);
-    const [rooms, setRooms] = useState(0);
-    const [filteredData, setFilteredData] = useState();
+    
     return(
             <div className="realEstate">
                 <div className="realEstate__filters">
                     <div className="realEstate__search">
-                        <TextField id="outlined-basic" label="Address" variant="outlined" />
+                        <TextField id="outlined-basic"  label="Address" variant="outlined" />
                         <IconButton aria-label="travel">
                             <TravelExploreIcon />
                         </IconButton>
                     </div>
-                    <TextField onChange={(value) => setRooms(value)} className="realEstate__rooms" id="outlined-basic" label="Rooms" variant="outlined" type="number"/>
+                    <TextField className="realEstate__rooms" id="outlined-basic" label="Rooms" variant="outlined" type="number"/>
                     <Autocomplete
                         className="realEstate__sort"
                         value={value}
-                        onChange={(event, newValue) => {
+                        onChange={(newValue) => {
                         setValue(newValue);
                         }}
                         inputValue={inputValue}
@@ -44,14 +43,11 @@ export default function RealEstate(){
                 </div>
                 
                 <div className="cardHolder">
-                    {!loading && data ? data[0].properties.map((p, key) => {
-                        if(rooms === 0){
+                    {!loading && data ? 
+                     data.map((p, key) => {           
                             return <EstateCard key={key} className="cardHolder__item" address={p.address} price={p.price} parking={p.parking} rooms={p.num_rooms}/>
-                        } else {
-                            
-                            
-                        }
-                    }) : <Box sx={{ display: 'flex' }}>
+                    }) 
+                    : <Box sx={{ display: 'flex' }}>
                             <CircularProgress />
                         </Box>}
                 </div>
